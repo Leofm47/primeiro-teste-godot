@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+const SPEED = 100.0
+const JUMP_VELOCITY = -300.0
+var health = 3  # vida do jogador
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,3 +23,27 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	var sprite = $AnimatedSprite2D
+	if velocity.length() > 0:
+		sprite.animation = "walk"
+		sprite.play()
+		
+		# Virar sprite conforme direção
+	if velocity.x != 0:
+		sprite.flip_h = velocity.x < 0
+	else:
+		sprite.stop()
+		
+		
+func take_damage(amount):
+	health -= amount
+	print("Vida:", health)
+	if health <= 0:
+		die()
+		
+func die():
+	if health <= 0:
+		print("Player morreu!")
+		# Reinicie a cena ou mande pro checkpoint
+		get_tree().reload_current_scene()

@@ -14,14 +14,14 @@ region = Rect2(0, 34, 34, 34)
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_hqtel")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_sweqy")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -34,11 +34,10 @@ size = Vector2(4, 11)
 [node name="player" type="CharacterBody2D" unique_id=93170881]
 script = ExtResource("1_onrkg")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1369839069]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1369839069]
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"walking"
-frame_progress = 0.43100125
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795127689]
 position = Vector2(-3.5, -4.75)
@@ -46,6 +45,7 @@ shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=59861981]
 position = Vector2(0, -14)
+zoom = Vector2(5, 5)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=810615410]
 position = Vector2(2, -14.5)

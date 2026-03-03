@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://i8j4e6o4vxtn"]
+
+[ext_resource type="Texture2D" uid="uid://c801pm3lvh1r4" path="res://assets/New Piskel.png" id="1_w2pp3"]
+[ext_resource type="Script" uid="uid://dpew12x4ejvap" path="res://area_2d.gd" id="2_gix62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmoth"]
+size = Vector2(27, 7)
+
+[node name="trap" type="Node2D" unique_id=1191558966]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=77520735]
+position = Vector2(-13, -16)
+texture = ExtResource("1_w2pp3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=147777836]
+script = ExtResource("2_gix62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=883270817]
+position = Vector2(-13.5, -3.5)
+shape = SubResource("RectangleShape2D_bmoth")
