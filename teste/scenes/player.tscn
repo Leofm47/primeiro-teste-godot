@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cnm3m3hl24sfh" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cgxkjo5k5tqo3" path="res://assets/New Piskel (5).png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://ces801ctphiwh" path="res://assets/New Piskel (5) (2).png" id="2_qhqgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 68, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_onrkg")
@@ -13,6 +18,14 @@ region = Rect2(0, 34, 34, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 0.8,
 "texture": SubResource("AtlasTexture_hqtel")
@@ -26,17 +39,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(15, 19.75)
+size = Vector2(17, 20)
 
 [node name="player" type="CharacterBody2D" unique_id=93170881 groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_onrkg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1369839069]
-position = Vector2(0, -14)
+[node name="Pivot" type="Node2D" parent="." unique_id=867770919]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot" unique_id=1369839069]
+position = Vector2(3, -4)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795127689]
-position = Vector2(-4, -10.125)
 shape = SubResource("RectangleShape2D_onrkg")
