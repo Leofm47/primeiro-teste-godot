@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cp6oks686bv32" path="res://assets/New Piskel (8).png" id="4_tefeu"]
 [ext_resource type="Texture2D" uid="uid://c5u7l7bn8t67k" path="res://assets/New Piskel (9).png" id="5_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://cc0gym844a1qw" path="res://assets/New Piskel (10).png" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://c5ux0nvocxsv7" path="res://scenes/DeathWall.tscn" id="9_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("2_tbgi4")
@@ -116,3 +117,7 @@ position = Vector2(550, 161)
 
 [node name="trap3" parent="." unique_id=10993052 instance=ExtResource("4_o6xl0")]
 position = Vector2(438, 161)
+
+[node name="DeathWall" parent="." unique_id=1625150700 node_paths=PackedStringArray("player") instance=ExtResource("9_85g3d")]
+position = Vector2(6, 133)
+player = NodePath("../player")
