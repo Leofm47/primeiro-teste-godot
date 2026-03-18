@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://i8j4e6o4vxtn"]
+
+[ext_resource type="Texture2D" uid="uid://cwnpg6icx2kt3" path="res://assets/trap.png" id="2_62q8x"]
+[ext_resource type="PackedScene" uid="uid://d0dtp6snq1q3b" path="res://scenes/killzone.tscn" id="2_aucmg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62q8x"]
+size = Vector2(22, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk2q1"]
+size = Vector2(24, 5.5)
+
+[node name="trap" type="StaticBody2D" unique_id=1598719281]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=794065996]
+position = Vector2(-14.000001, -14)
+scale = Vector2(0.8437501, 0.84375)
+texture = ExtResource("2_62q8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731833028]
+position = Vector2(-15, -3)
+shape = SubResource("RectangleShape2D_62q8x")
+
+[node name="killzone" parent="." unique_id=208205698 instance=ExtResource("2_aucmg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1864348828]
+position = Vector2(-15, -3.25)
+shape = SubResource("RectangleShape2D_tk2q1")
