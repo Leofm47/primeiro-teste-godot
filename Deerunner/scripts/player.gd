@@ -12,6 +12,7 @@ var invincible := false
 var knockback_time := 0.0
 var dead := false
 
+@onready var deathwall = get_parent().get_node("DeathWall")
 @onready var sprite := $Pivot/AnimatedSprite2D
 @onready var pivot := $Pivot
 
@@ -44,6 +45,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+	if deathwall:
+		if global_position.x <= deathwall.global_position.x:
+			die()
+	
 
 	move_and_slide()
 	update_animation()

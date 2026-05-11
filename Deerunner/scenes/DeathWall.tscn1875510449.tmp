@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c5ux0nvocxsv7"]
+
+[ext_resource type="PackedScene" uid="uid://d0dtp6snq1q3b" path="res://scenes/killzone.tscn" id="1_8avs5"]
+[ext_resource type="Script" uid="uid://c7fisbcxnsqc1" path="res://scripts/DeathWall.gd" id="1_jwjdv"]
+[ext_resource type="Texture2D" uid="uid://cl3t74iou7sne" path="res://assets/New Piskel (12).png" id="3_wqddj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jwjdv"]
+normal = Vector2(1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyggl"]
+atlas = ExtResource("3_wqddj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuq81"]
+atlas = ExtResource("3_wqddj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb561"]
+atlas = ExtResource("3_wqddj")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85ngg"]
+atlas = ExtResource("3_wqddj")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sr36y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyggl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuq81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb561")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85ngg")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[node name="DeathWall" type="Area2D" unique_id=1625150700]
+script = ExtResource("1_jwjdv")
+
+[node name="killzone" parent="." unique_id=208205698 instance=ExtResource("1_8avs5")]
+damage = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=817138681]
+shape = SubResource("WorldBoundaryShape2D_jwjdv")
+
+[node name="fire1" type="AnimatedSprite2D" parent="killzone" unique_id=894332192]
+position = Vector2(-2.999998, 21.048714)
+rotation = 1.5707964
+scale = Vector2(0.53201115, 0.49218225)
+sprite_frames = SubResource("SpriteFrames_sr36y")
+animation = &"fire"
+frame_progress = 0.22682509
+
+[node name="fire2" type="AnimatedSprite2D" parent="killzone" unique_id=126500862]
+position = Vector2(-3.250166, -11.975643)
+rotation = 1.5707964
+scale = Vector2(0.53201115, 0.49218225)
+sprite_frames = SubResource("SpriteFrames_sr36y")
+animation = &"fire"
+frame_progress = 0.22682509
+
+[connection signal="body_entered" from="killzone" to="." method="_on_killzone_body_entered"]
